@@ -1,0 +1,4 @@
+Flask==3.1.2
+waitress==3.0.2
+gunicorn==25.3.0
+psutil==7.1.0

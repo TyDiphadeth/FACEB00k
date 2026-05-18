@@ -46,4 +46,8 @@ if __name__ == '__main__':
     actual_ip = get_host_ip()
     print(f'Serving on http://localhost:{port}/')
     print(f'Accessible from same network at http://{actual_ip}:{port}/')
-    app.run(host=host, port=port)
+    try:
+        from waitress import serve
+        serve(app, host=host, port=port)
+    except ImportError:
+        app.run(host=host, port=port)
