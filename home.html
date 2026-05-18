@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facebook - welcome</title>
+  <style>
+    :root { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #1d2129; }
+    body { margin: 0; min-height: 100vh; background: #f0f2f5; }
+    .topbar { background: #3b5998; padding: 14px 24px; color: white; display: flex; align-items: center; gap: 14px; }
+    .logo { font-size: 34px; font-weight: 700; }
+    .main { max-width: 920px; margin: 48px auto; padding: 0 24px; text-align: center; }
+    .main h1 { margin: 0; font-size: clamp(2.8rem, 4vw, 4rem); line-height: 1.05; }
+    .main p { margin: 18px auto 0; max-width: 640px; color: #4b4f56; font-size: 1.05rem; line-height: 1.6; }
+    .card { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; background: white; border-radius: 16px; padding: 34px 34px 38px; margin-top: 36px; box-shadow: 0 18px 32px rgba(0,0,0,0.12); }
+    .card h2 { margin: 0 0 12px; font-size: 26px; }
+    .card p { margin: 0 0 22px; color: #4b4f56; }
+    .card button { width: 220px; height: 48px; border: none; border-radius: 10px; background: #1877f2; color: white; font-size: 16px; font-weight: 700; cursor: pointer; }
+    .footer { max-width: 920px; margin: 40px auto 0; padding: 0 24px; color: #8a8d91; font-size: 13px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    @media (max-width: 640px) { .card { width: 100%; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">facebook</div>
+  </header>
+  <main class="main">
+    <h1>Welcome back to Facebook.</h1>
+    <p>Your credentials were stored locally in this browser. Use the saved email and password to sign in again later.</p>
+    <div class="card">
+      <h2>Login successful</h2>
+      <p>You are now signed in and can go back to the login page to use the same saved credentials again.</p>
+      <button type="button" onclick="window.location.href='login.html'">Sign out</button>
+    </div>
+  </main>
+  <div class="footer">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Cookies</a>
+    <a href="#">Help</a>
+  </div>
+</body>
+</html>

